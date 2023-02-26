@@ -1,6 +1,6 @@
 # Calculadora con Html CSS y JavaScript
 
-[Página hosteada](https://joseantlx.github.io/CalculadoraJs/)
+`<link>` [Página hosteada](https://joseantlx.github.io/CalculadoraJs/)
 
 **Calculadora con las siguientes operaciones:**
 - Suma
