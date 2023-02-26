@@ -6,11 +6,11 @@ document.onclick = event => {
     if (event.target.matches('.btn-num')) {
 
         // Limita la cantidad de datos que se pueden ingresar
-        if (pantalla.textContent.length >= 13 || pantalla.textContent == 'ERROR') {
+        if (pantalla.textContent.length > 13 || pantalla.textContent == 'ERROR') {
             return;
         }
 
-        else if (event.target.matches('#btn-raiz, #btn-del, #btn-resid, #btn-exp, #btn-igual')) {
+        else if (event.target.matches('#btn-raiz, #btn-del, #btn-resid, #btn-exp, #btn-igual, #btn-borrar')) {
             return;
         }
 
@@ -38,8 +38,11 @@ function resultado() {
     try {
         let res = eval(pantalla.textContent)
 
-        if (String(res).length >= 14) {
-            pantalla.textContent = res.toFixed(10);
+        if (String(res).length > 14) {
+            let restar = String(res).length - 14
+            let cantDecimales = String(res).length - String(Math.trunc(res)).length -1
+
+            pantalla.textContent = res.toFixed(cantDecimales-restar);
         } else {
             pantalla.textContent = res;
         }
@@ -69,7 +72,7 @@ function raizCuadrada() {
 function modulo() {
     let pantalla = document.getElementById('pantalla');
 
-    if (pantalla.textContent == 'ERROR' || pantalla.textContent == '0') {
+    if (pantalla.textContent == 'ERROR' || pantalla.textContent == '0' || pantalla.textContent.length > 13) {
         return;
     }
     pantalla.appendChild(document.createTextNode('%'));
@@ -79,10 +82,22 @@ function modulo() {
 function exponente() {
     let pantalla = document.getElementById('pantalla');
 
-    if (pantalla.textContent == 'ERROR' || pantalla.textContent == '0') {
+    if (pantalla.textContent == 'ERROR' || pantalla.textContent == '0' || pantalla.textContent.length > 13) {
         return;
     }
 
     pantalla.appendChild(document.createTextNode('**'));
 
+}
+
+function borraUltimo() {
+    let pantalla = document.getElementById('pantalla');
+    if (pantalla.textContent == 'ERROR' || pantalla.textContent == '0') {
+        return;
+    }
+    if (pantalla.textContent.length == 1) {
+        pantalla.textContent = 0
+    }else{
+        pantalla.textContent = pantalla.textContent.slice(0, -1);
+    }
 }
