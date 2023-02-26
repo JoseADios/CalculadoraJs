@@ -62,9 +62,14 @@
 
 #btn-igual{
     font-weight: bold;
-    background-color: rgb(14, 64, 114);
+    background-color: #0e4072;
+}
+
+#btn-igual:hover{
+    background-color: #12508f;
+
 }
 
 body{
-    background-color: lightsteelblue;
+    background-color: #243852;
 }
