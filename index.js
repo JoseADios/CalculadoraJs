@@ -36,10 +36,9 @@ function resultado() {
     let pantalla = document.getElementById('pantalla');
     
     try {
-
         let res = eval(pantalla.textContent)
 
-        if (String(res).length > 14) {
+        if (String(res).length >= 14) {
             pantalla.textContent = res.toFixed(10);
         } else {
             pantalla.textContent = res;

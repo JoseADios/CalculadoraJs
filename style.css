@@ -7,7 +7,7 @@
 
 .calculator{
     min-width: 200px;
-    width: 400px;
+    width: 360px;
     max-width: 500px;
     padding: 2em;
 }
@@ -23,7 +23,7 @@
     justify-content: end;
     padding: 10px;
     padding-right: 20px;
-    font-size: 2.5em;
+    font-size: 2.2em;
     color: white;
     font-weight: bold;
     margin-bottom: 10px;
@@ -46,7 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80px;
+    height: 70px;
     padding: 0px;
     border: solid 1px rgb(38, 42, 46);
 }
@@ -63,6 +63,13 @@
 #btn-igual{
     font-weight: bold;
     background-color: #0e4072;
+    grid-column: 3 / 5;
+}
+
+#btn-sum{
+    grid-column: 4;
+    height: 100%;
+    grid-row: 4 / 6;
 }
 
 #btn-igual:hover{
