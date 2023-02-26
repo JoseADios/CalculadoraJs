@@ -9,7 +9,6 @@
     min-width: 200px;
     width: 360px;
     max-width: 500px;
-    padding: 2em;
 }
 
 #pantalla{
@@ -18,15 +17,17 @@
     height: 100px;
     border-radius: 2px;
     background-color: rgb(70, 69, 69);
-    display: flex;
-    align-items: flex-end;
-    justify-content: end;
+    text-align: right;
     padding: 10px;
     padding-right: 20px;
     font-size: 2.2em;
     color: white;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+#pantalla:focus-visible{
+    outline: none;
 }
 
 .col-btns{
@@ -70,6 +71,11 @@
     grid-column: 4;
     height: 100%;
     grid-row: 4 / 6;
+    background-color: #1e1e22;
+}
+
+#btn-sum:hover{
+    background-color: #2a2e33;
 }
 
 #btn-igual:hover{
@@ -78,5 +84,5 @@
 }
 
 body{
-    background-color: #243852;
+    background-color: #9eacf5;
 }

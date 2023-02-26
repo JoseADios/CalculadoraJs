@@ -6,19 +6,17 @@ document.onclick = event => {
     if (event.target.matches('.btn-num')) {
 
         // Limita la cantidad de datos que se pueden ingresar
-        if (pantalla.textContent.length > 13 || pantalla.textContent == 'ERROR') {
+        if (pantalla.value.length > 13 || pantalla.value == 'ERROR') {
             return;
         }
-
         else if (event.target.matches('#btn-raiz, #btn-del, #btn-resid, #btn-exp, #btn-igual, #btn-borrar')) {
             return;
         }
 
-        if (pantalla.textContent == '0') {
-            pantalla.textContent = event.target.textContent;
+        if (pantalla.value == '0') {
+            pantalla.value = event.target.textContent;
         } else {
-            let val = document.createTextNode(event.target.textContent);
-            pantalla.appendChild(val);
+            pantalla.value += event.target.textContent
         }
 
     }
@@ -28,7 +26,7 @@ document.onclick = event => {
 // Para borrar el contenido de la pantalla
 function borraCont() {
     let pantalla = document.getElementById('pantalla');
-    pantalla.textContent = '0';
+    pantalla.value = '0';
 }
 
 // Enter
@@ -36,19 +34,20 @@ function resultado() {
     let pantalla = document.getElementById('pantalla');
     
     try {
-        let res = eval(pantalla.textContent)
+        let res = eval(pantalla.value)
 
         if (String(res).length > 14) {
+
+            // Evitar que se salgan los numeros de la pantalla
             let restar = String(res).length - 14
             let cantDecimales = String(res).length - String(Math.trunc(res)).length -1
-
-            pantalla.textContent = res.toFixed(cantDecimales-restar);
+            pantalla.value = res.toFixed(cantDecimales-restar);
         } else {
-            pantalla.textContent = res;
+            pantalla.value = res;
         }
 
     } catch (e) {
-        pantalla.textContent = 'ERROR';
+        pantalla.value = 'ERROR';
     }
 }
 
@@ -56,15 +55,15 @@ function resultado() {
 function raizCuadrada() {
     let pantalla = document.getElementById('pantalla');
 
-    if (pantalla.textContent == 'ERROR') {
+    if (pantalla.value == 'ERROR') {
         return;
     }
-    let res = Math.sqrt(eval(pantalla.textContent))
+    let res = Math.sqrt(eval(pantalla.value))
 
     if (String(res).length > 14) {
-        pantalla.textContent = res.toFixed(10);
+        pantalla.value = res.toFixed(10);
     } else {
-        pantalla.textContent = res;
+        pantalla.value = res;
     }
 }
 
@@ -72,32 +71,39 @@ function raizCuadrada() {
 function modulo() {
     let pantalla = document.getElementById('pantalla');
 
-    if (pantalla.textContent == 'ERROR' || pantalla.textContent == '0' || pantalla.textContent.length > 13) {
+    if (pantalla.value == 'ERROR' || pantalla.value == '0' || pantalla.value.length > 13) {
         return;
     }
-    pantalla.appendChild(document.createTextNode('%'));
+    pantalla.value += '%'
 }
 
 // Eponente
 function exponente() {
     let pantalla = document.getElementById('pantalla');
 
-    if (pantalla.textContent == 'ERROR' || pantalla.textContent == '0' || pantalla.textContent.length > 13) {
+    if (pantalla.value == 'ERROR' || pantalla.value == '0' || pantalla.value.length > 13) {
         return;
     }
 
-    pantalla.appendChild(document.createTextNode('**'));
+    pantalla.value += '**';
 
 }
 
 function borraUltimo() {
     let pantalla = document.getElementById('pantalla');
-    if (pantalla.textContent == 'ERROR' || pantalla.textContent == '0') {
+    if (pantalla.value == 'ERROR' || pantalla.value == '0') {
         return;
     }
-    if (pantalla.textContent.length == 1) {
-        pantalla.textContent = 0
+    if (pantalla.value.length == 1) {
+        pantalla.value = 0
     }else{
-        pantalla.textContent = pantalla.textContent.slice(0, -1);
+        pantalla.value = pantalla.value.slice(0, -1);
     }
 }
+
+// Cuando se presione enter
+document.addEventListener('keyup', function(event) {
+    if (event.key == 'Enter'){
+        resultado()
+    }
+})
