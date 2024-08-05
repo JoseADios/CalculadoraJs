@@ -6,6 +6,7 @@
 }
 
 .calculator{
+    box-shadow: 9px 9px 20px 3px #425f88;
     min-width: 200px;
     width: 360px;
     max-width: 500px;
