@@ -1,6 +1,6 @@
 # 🧮 Calculadora con HTML, CSS y JavaScript
 
-[🔗 Página hosteada](https://joseantlx.github.io/CalculadoraJs/)
+[🔗 Página hosteada](https://master--jd-calculadorajs.netlify.app/)
 
 ## 📜 Descripción del Proyecto
 
